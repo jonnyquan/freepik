@@ -43,13 +43,13 @@ export function UpscalerPlayground({ slug, lang: initialLang }: UpscalerPlaygrou
       <div className="bg-glow bg-glow-1"></div>
       <div className="bg-glow bg-glow-2"></div>
 
-      <div className="page-container" style={{ maxWidth: "880px", margin: "0 auto" }}>
+      <div className="page-container">
         <header className="site-header">
-          <Link href="/" className="logo" id="site-logo" style={{ textDecoration: "none" }}>
+          <Link href={lang === "en" ? "/" : `/${lang}`} className="logo" id="site-logo" style={{ textDecoration: "none" }}>
             <span className="logo-accent">Freepik</span> <span className="logo-arrow">➔</span> <span className="logo-highlight">Magnific</span>
           </Link>
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <span className="badge">{t.communityGuide} / {displaySlugBadge}</span>
+            <span className="badge">{t.communityGuide}</span>
             <select 
               value={lang} 
               onChange={(e) => {
@@ -81,84 +81,98 @@ export function UpscalerPlayground({ slug, lang: initialLang }: UpscalerPlaygrou
           </div>
         </header>
 
-        <main className="content-area" style={{ padding: "clamp(1.5rem, 4vw, 3rem)", borderRadius: "24px" }}>
-          <div className="notice-banner" style={{ marginBottom: "var(--spacing-lg)", background: "rgba(245, 158, 11, 0.05)" }}>
-            <span className="notice-icon" style={{ fontSize: "1.8rem" }}>⚠️</span>
-            <div className="notice-text" style={{ fontSize: "1.05rem" }}>
-              <strong>{t.subpageWarningTitle}</strong>
-              <p style={{ marginTop: "6px", color: "oklch(0.8 0.05 80)" }}>
-                {t.subpageWarningP}
-              </p>
-            </div>
-          </div>
+        <div className="layout-grid">
+          <main className="content-area">
+            <article className="guide-article">
+              {/* Notice Warning Banner at the Top */}
+              <div className="notice-banner" style={{ background: "rgba(245, 158, 11, 0.05)", margin: 0 }}>
+                <span className="notice-icon" style={{ fontSize: "1.8rem" }}>⚠️</span>
+                <div className="notice-text" style={{ fontSize: "1.05rem" }}>
+                  <strong>{t.subpageWarningTitle}</strong>
+                  <p style={{ marginTop: "6px", color: "oklch(0.8 0.05 80)" }}>
+                    {t.subpageWarningP}
+                  </p>
+                </div>
+              </div>
 
-          <div style={{ margin: "var(--spacing-lg) 0", display: "flex", flexDirection: "column", gap: "var(--spacing-xs)", textAlign: "center" }}>
-            <h2 className="main-heading" style={{ fontSize: "2rem" }}>{t.subpageHeading}</h2>
-            <p style={{ color: "var(--text-secondary)", lineHeight: "1.6", maxWidth: "600px", margin: "0 auto" }}>
-              {t.subpageDesc}
-            </p>
-          </div>
+              <h1 className="main-heading">{t.subpageHeading}</h1>
 
-          <div style={{ 
-            display: "grid", 
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", 
-            gap: "var(--spacing-lg)", 
-            marginTop: "var(--spacing-xl)" 
-          }}>
-            {/* Magnific Official Callout */}
-            <div className="banner-card" style={{ 
-              border: "1px solid rgba(20, 250, 140, 0.25)", 
-              background: "linear-gradient(135deg, rgba(10, 30, 20, 0.6) 0%, rgba(10, 10, 20, 0.6) 100%)", 
-              padding: "var(--spacing-lg)",
-              display: "flex",
-              flexDirection: "column",
-              height: "100%"
-            }}>
-              <div className="banner-badge" style={{ 
-                background: "linear-gradient(90deg, var(--accent-magnific), oklch(0.7 0.15 160))", 
-                boxShadow: "0 4px 15px rgba(20, 250, 140, 0.2)" 
-              }}>{t.subpageCard1Badge}</div>
-              <h3 className="banner-title" style={{ marginTop: "var(--spacing-sm)" }}>{t.subpageCard1Title}</h3>
-              <p className="banner-desc" style={{ flexGrow: 1, margin: "var(--spacing-sm) 0 var(--spacing-md) 0" }}>
-                {t.subpageCard1Desc}
-              </p>
-              <a href="https://magnific.com" id="btn-magnific-official" target="_blank" rel="noopener noreferrer" className="banner-cta" style={{ background: "linear-gradient(90deg, #fff, #e6ffe6)", color: "#000", marginTop: "auto" }}>
-                <span>{t.subpageCard1Btn}</span>
-                <svg className="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} style={{ width: "1.1rem", height: "1.1rem" }}>
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </a>
-            </div>
+              <div className="meta-info" style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div style={{ display: "flex", gap: "var(--spacing-md)", fontSize: "0.85rem", color: "var(--text-muted)" }}>
+                  <span className="meta-date">{t.published}</span>
+                  <span className="meta-author">{t.source}</span>
+                </div>
+                {/* Legal Disclaimer Box */}
+                <div className="disclaimer-alert-box" style={{ 
+                  background: "rgba(255, 255, 255, 0.02)", 
+                  border: "1px solid var(--glass-border)", 
+                  borderRadius: "12px", 
+                  padding: "var(--spacing-sm)", 
+                  fontSize: "0.85rem",
+                  color: "var(--text-muted)",
+                  lineHeight: "1.5"
+                }}>
+                  <strong>{t.disclaimerLabel}</strong> {t.disclaimerText}
+                </div>
+              </div>
 
-            {/* DeepImagine Alternative Callout (Styled as a Premium Ad) */}
-            <div className="banner-card" style={{ 
-              border: "1px solid rgba(168, 85, 247, 0.45)", 
-              background: "linear-gradient(135deg, rgba(30, 20, 50, 0.6) 0%, rgba(10, 10, 20, 0.7) 100%)", 
-              padding: "var(--spacing-lg)",
-              display: "flex",
-              flexDirection: "column",
-              height: "100%",
-              boxShadow: "0 10px 30px rgba(168, 85, 247, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05)"
-            }}>
+              <section className="guide-section">
+                <h2>{t.subpageCard1Title}</h2>
+                <p>{t.subpageCard1Desc}</p>
+                
+                <div className="cta-box">
+                  <a href="https://magnific.com" id="link-magnific-official" target="_blank" rel="noopener noreferrer" className="official-btn">
+                    <span>{t.subpageCard1Btn}</span>
+                    <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                    </svg>
+                  </a>
+                </div>
+              </section>
+
+              <section className="guide-section">
+                <h2>{t.section3Title}</h2>
+                <ul className="migration-list">
+                  <li>
+                    <strong>{t.migrationItem1Title}</strong>{t.migrationItem1Desc}
+                  </li>
+                  <li>
+                    <strong>{t.migrationItem2Title}</strong>{t.migrationItem2Desc}
+                  </li>
+                  <li>
+                    <strong>{t.migrationItem3Title}</strong>{t.migrationItem3Desc}
+                  </li>
+                </ul>
+              </section>
+
+              <section className="guide-section" style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "var(--spacing-md)" }}>
+                <h2>{t.section4Title}</h2>
+                <p>{t.section4P}</p>
+              </section>
+            </article>
+          </main>
+
+          <aside className="sidebar-area">
+            {/* DeepImagine Sponsored Ad Card */}
+            <div className="banner-card" id="deepimagine-banner-card" style={{ border: "1px solid rgba(168, 85, 247, 0.45)", background: "linear-gradient(135deg, rgba(30, 20, 50, 0.6) 0%, rgba(10, 10, 20, 0.7) 100%)" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div className="banner-badge" style={{ 
-                  background: "linear-gradient(90deg, var(--accent-sponsor), oklch(0.6 0.2 330))", 
-                  boxShadow: "0 4px 15px rgba(168, 85, 247, 0.4)" 
-                }}>{t.adBadge}</div>
+                <div className="banner-badge" style={{ background: "linear-gradient(90deg, var(--accent-sponsor), oklch(0.6 0.2 330))" }}>
+                  {t.adBadge}
+                </div>
                 <span style={{ 
                   fontSize: "0.7rem", 
                   color: "var(--text-muted)", 
-                  background: "rgba(255,255,255,0.05)", 
+                  background: "rgba(255, 255, 255, 0.05)", 
                   padding: "2px 6px", 
                   borderRadius: "4px", 
                   border: "1px solid var(--glass-border)",
                   letterSpacing: "0.5px"
                 }}>{t.adLabel}</span>
               </div>
-              <h3 className="banner-title" style={{ marginTop: "var(--spacing-sm)", fontSize: "1.4rem", fontWeight: "800" }}>{t.adTitle}</h3>
+
+              <h3 className="banner-title" style={{ marginTop: "var(--spacing-xs)" }}>{t.adTitle}</h3>
               
-              <p className="banner-desc" style={{ margin: "var(--spacing-xs) 0 var(--spacing-sm) 0" }}>
+              <p className="banner-desc">
                 {t.adDesc}
               </p>
 
@@ -175,39 +189,31 @@ export function UpscalerPlayground({ slug, lang: initialLang }: UpscalerPlaygrou
                 </div>
               </div>
 
-              <div style={{ 
-                display: "flex", 
-                flexDirection: "column", 
-                gap: "10px", 
-                margin: "0 0 var(--spacing-md) 0",
-                padding: "var(--spacing-xs) 0",
-                borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.05)"
-              }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", color: "var(--text-secondary)" }}>
-                  <span style={{ color: "var(--accent-sponsor)", fontSize: "1.1rem" }}>⚡</span>
-                  <span>{t.feature2Desc}</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", color: "var(--text-secondary)" }}>
-                  <span style={{ color: "var(--accent-sponsor)", fontSize: "1.1rem" }}>💎</span>
+              <div className="banner-features" style={{ margin: "0 0 var(--spacing-sm) 0", padding: "10px 0" }}>
+                <div className="feature-item">
+                  <span className="feature-icon">✨</span>
                   <span>{t.feature1Desc}</span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", color: "var(--text-secondary)" }}>
-                  <span style={{ color: "var(--accent-sponsor)", fontSize: "1.1rem" }}>🎁</span>
+                <div className="feature-item">
+                  <span className="feature-icon">⚡</span>
+                  <span>{t.feature2Desc}</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-icon">🎁</span>
                   <span>{t.feature3Desc}</span>
                 </div>
               </div>
 
-              <a href="https://deepimagine.app" id="btn-deepimagine-register" target="_blank" rel="noopener noreferrer" className="banner-cta" style={{ background: "linear-gradient(90deg, #fff, #f3e8ff)", color: "#000", marginTop: "auto", fontWeight: "700" }}>
+              <a href="https://deepimagine.app" id="btn-deepimagine-register" target="_blank" rel="noopener noreferrer" className="banner-cta" style={{ background: "linear-gradient(90deg, #fff, #f3e8ff)", color: "#000", fontWeight: "700" }}>
                 <span>{t.btnDeepImagineRegister}</span>
-                <svg className="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} style={{ width: "1.1rem", height: "1.1rem" }}>
+                <svg className="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </a>
             </div>
-          </div>
-        </main>
+          </aside>
+        </div>
 
         <footer className="site-footer">
           <p>{t.footerText}</p>
