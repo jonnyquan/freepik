@@ -20,7 +20,7 @@ function formatTitleName(slug: string[]): string {
   if (lower.includes("reimagine") || lower.includes("generate") || lower.includes("generator")) {
     return "AI Reimagine & Generator Tool";
   }
-  
+
   const last = slug[slug.length - 1] || "AI Tool";
   return last
     .replace(/[_-]+/g, " ")
