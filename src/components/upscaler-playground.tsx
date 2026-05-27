@@ -72,24 +72,60 @@ export function UpscalerPlayground({ slug }: UpscalerPlaygroundProps) {
               </a>
             </div>
 
-            {/* DeepImagine Alternative Callout */}
+            {/* DeepImagine Alternative Callout (Styled as a Premium Ad) */}
             <div className="banner-card" style={{ 
-              border: "1px solid rgba(168, 85, 247, 0.35)", 
-              background: "linear-gradient(135deg, rgba(30, 20, 50, 0.6) 0%, rgba(10, 10, 20, 0.6) 100%)", 
+              border: "1px solid rgba(168, 85, 247, 0.45)", 
+              background: "linear-gradient(135deg, rgba(30, 20, 50, 0.6) 0%, rgba(10, 10, 20, 0.7) 100%)", 
               padding: "var(--spacing-lg)",
               display: "flex",
               flexDirection: "column",
-              height: "100%"
+              height: "100%",
+              boxShadow: "0 10px 30px rgba(168, 85, 247, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05)"
             }}>
-              <div className="banner-badge" style={{ 
-                background: "linear-gradient(90deg, var(--accent-sponsor), oklch(0.6 0.2 330))", 
-                boxShadow: "0 4px 15px rgba(168, 85, 247, 0.3)" 
-              }}>Alternative Option</div>
-              <h3 className="banner-title" style={{ marginTop: "var(--spacing-sm)" }}>体验高性价比替代方案 - DeepImagine</h3>
-              <p className="banner-desc" style={{ flexGrow: 1, margin: "var(--spacing-sm) 0 var(--spacing-md) 0" }}>
-                如果您正在寻找更轻量、对独立创作者更友好且性价比极高的方案，推荐体验 DeepImagine。我们使用原生推理引擎，渲染迅速且提供免费试用额度！
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div className="banner-badge" style={{ 
+                  background: "linear-gradient(90deg, var(--accent-sponsor), oklch(0.6 0.2 330))", 
+                  boxShadow: "0 4px 15px rgba(168, 85, 247, 0.4)" 
+                }}>Sponsor · 赞助推荐</div>
+                <span style={{ 
+                  fontSize: "0.7rem", 
+                  color: "var(--text-muted)", 
+                  background: "rgba(255,255,255,0.05)", 
+                  padding: "2px 6px", 
+                  borderRadius: "4px", 
+                  border: "1px solid var(--glass-border)",
+                  letterSpacing: "0.5px"
+                }}>AD · 广告</span>
+              </div>
+              <h3 className="banner-title" style={{ marginTop: "var(--spacing-sm)", fontSize: "1.4rem", fontWeight: "800" }}>觉得 Magnific 订阅太贵？</h3>
+              <p className="banner-desc" style={{ margin: "var(--spacing-xs) 0 var(--spacing-sm) 0" }}>
+                试试新一代轻量级独立 AI 图像增强工具：<strong>DeepImagine.app</strong>。面向独立开发者定制，提供高性价比超清还原：
               </p>
-              <a href="https://deepimagine.app" id="btn-deepimagine-register" target="_blank" rel="noopener noreferrer" className="banner-cta" style={{ background: "linear-gradient(90deg, #fff, #f3e8ff)", color: "#000", marginTop: "auto" }}>
+              
+              <div style={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                gap: "10px", 
+                margin: "0 0 var(--spacing-md) 0",
+                padding: "var(--spacing-xs) 0",
+                borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.05)"
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", color: "var(--text-secondary)" }}>
+                  <span style={{ color: "var(--accent-sponsor)", fontSize: "1.1rem" }}>⚡</span>
+                  <span><strong>极速推理：</strong>秒级极速渲染，无需漫长排队</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", color: "var(--text-secondary)" }}>
+                  <span style={{ color: "var(--accent-sponsor)", fontSize: "1.1rem" }}>💎</span>
+                  <span><strong>价格超值：</strong>资费更低，最划算的无损放大选项</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", color: "var(--text-secondary)" }}>
+                  <span style={{ color: "var(--accent-sponsor)", fontSize: "1.1rem" }}>🎁</span>
+                  <span><strong>免费额度：</strong>新用户注册立享免费额度，零成本体验</span>
+                </div>
+              </div>
+
+              <a href="https://deepimagine.app" id="btn-deepimagine-register" target="_blank" rel="noopener noreferrer" className="banner-cta" style={{ background: "linear-gradient(90deg, #fff, #f3e8ff)", color: "#000", marginTop: "auto", fontWeight: "700" }}>
                 <span>免费试用 DeepImagine</span>
                 <svg className="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} style={{ width: "1.1rem", height: "1.1rem" }}>
                   <line x1="5" y1="12" x2="19" y2="12" />

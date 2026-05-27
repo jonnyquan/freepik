@@ -316,6 +316,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  animation: adCardGlow 4s ease-in-out infinite alternate;
 }
 
 /* Inner neon glow effect */
@@ -988,4 +989,16 @@ a:focus-visible, button:focus-visible {
 .faq-answer p {
   margin-top: 8px;
 }
+
+@keyframes adCardGlow {
+  0% {
+    border-color: rgba(168, 85, 247, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 10px rgba(168, 85, 247, 0.05);
+  }
+  100% {
+    border-color: rgba(168, 85, 247, 0.6);
+    box-shadow: 0 15px 40px rgba(168, 85, 247, 0.15), 0 0 20px rgba(168, 85, 247, 0.25);
+  }
+}
+
 
