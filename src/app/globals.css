@@ -795,3 +795,197 @@ a:focus-visible, button:focus-visible {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Preset Selector Styling */
+.preset-selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.preset-selector-title {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.preset-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preset-tab-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.preset-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.preset-tab-btn.active {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(168, 85, 247, 0.05) 100%);
+  border-color: var(--accent-sponsor);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+/* Comparison Table Styling */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: var(--glass-shadow);
+  margin-top: var(--spacing-sm);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+  min-width: 600px;
+}
+
+.comparison-table th, 
+.comparison-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.comparison-table th {
+  background: rgba(255, 255, 255, 0.02);
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 2px solid var(--glass-border);
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table tr:hover td {
+  background: rgba(255, 255, 255, 0.01);
+  color: #fff;
+}
+
+.row-feature {
+  color: #fff !important;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.01);
+  width: 22%;
+}
+
+/* Specific Columns Highlight */
+.highlight-column {
+  position: relative;
+}
+
+.highlight-magnific {
+  border-bottom: 2px solid var(--accent-magnific) !important;
+  background: rgba(20, 250, 140, 0.02) !important;
+}
+
+.highlight-sponsor {
+  border-bottom: 2px solid var(--accent-sponsor) !important;
+  background: rgba(168, 85, 247, 0.04) !important;
+}
+
+.column-magnific {
+  background: rgba(20, 250, 140, 0.01);
+  border-left: 1px solid rgba(20, 250, 140, 0.05);
+  border-right: 1px solid rgba(20, 250, 140, 0.05);
+}
+
+.column-sponsor {
+  background: rgba(168, 85, 247, 0.02);
+  border-left: 1px solid rgba(168, 85, 247, 0.05);
+  border-right: 1px solid rgba(168, 85, 247, 0.05);
+}
+
+/* FAQ Accordion Styling */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: var(--spacing-sm);
+}
+
+.faq-item {
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  overflow: hidden;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.faq-item[open] {
+  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(168, 85, 247, 0.02);
+}
+
+.faq-question {
+  padding: var(--spacing-md);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  list-style: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-chevron {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: transform 0.3s ease;
+}
+
+.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--accent-sponsor);
+}
+
+.faq-answer {
+  padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.faq-answer p {
+  margin-top: 8px;
+}
+

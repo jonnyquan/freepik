@@ -39,5 +39,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CatchAllPage({ params }: Props) {
   const { slug } = await params;
-  return <UpscalerPlayground slug={slug} />;
+  return <UpscalerPlayground key={slug.join("/")} slug={slug} />;
 }
