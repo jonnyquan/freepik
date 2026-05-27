@@ -6,14 +6,19 @@ import { TRANSLATIONS, Lang } from "@/components/translations";
 
 type UpscalerPlaygroundProps = {
   slug: string[];
+  lang?: Lang;
 };
 
-export function UpscalerPlayground({ slug }: UpscalerPlaygroundProps) {
-  const [lang, setLang] = useState<Lang>("en");
+export function UpscalerPlayground({ slug, lang: initialLang }: UpscalerPlaygroundProps) {
+  const [lang, setLang] = useState<Lang>(initialLang || "en");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    if (initialLang) {
+      setLang(initialLang);
+      return;
+    }
     const savedLang = localStorage.getItem("site-lang") as Lang;
     if (savedLang && savedLang in TRANSLATIONS) {
       setLang(savedLang);
@@ -26,7 +31,7 @@ export function UpscalerPlayground({ slug }: UpscalerPlaygroundProps) {
         setLang("en");
       }
     }
-  }, []);
+  }, [initialLang]);
 
   const t = TRANSLATIONS[lang];
   const toolSlugName = slug[slug.length - 1] || "AI Tool";

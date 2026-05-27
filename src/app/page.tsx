@@ -4,12 +4,16 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { TRANSLATIONS, Lang } from "@/components/translations";
 
-export default function Home() {
-  const [lang, setLang] = useState<Lang>("en");
+export default function Home({ lang: initialLang }: { lang?: Lang }) {
+  const [lang, setLang] = useState<Lang>(initialLang || "en");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    if (initialLang) {
+      setLang(initialLang);
+      return;
+    }
     const savedLang = localStorage.getItem("site-lang") as Lang;
     if (savedLang && savedLang in TRANSLATIONS) {
       setLang(savedLang);
@@ -22,7 +26,7 @@ export default function Home() {
         setLang("en");
       }
     }
-  }, []);
+  }, [initialLang]);
 
   const t = TRANSLATIONS[lang];
 
