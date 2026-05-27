@@ -11,23 +11,18 @@ export default function Home() {
   useEffect(() => {
     setMounted(true);
     const savedLang = localStorage.getItem("site-lang") as Lang;
-    if (savedLang === "en" || savedLang === "zh") {
+    if (savedLang && savedLang in TRANSLATIONS) {
       setLang(savedLang);
     } else {
       const browserLang = navigator.language.toLowerCase();
-      if (browserLang.startsWith("zh")) {
-        setLang("zh");
+      const prefix = browserLang.split("-")[0] as Lang;
+      if (prefix && prefix in TRANSLATIONS) {
+        setLang(prefix);
       } else {
         setLang("en");
       }
     }
   }, []);
-
-  const toggleLang = () => {
-    const nextLang = lang === "zh" ? "en" : "zh";
-    setLang(nextLang);
-    localStorage.setItem("site-lang", nextLang);
-  };
 
   const t = TRANSLATIONS[lang];
 
@@ -44,24 +39,34 @@ export default function Home() {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <span className="badge">{t.communityGuide}</span>
-            <button 
-              onClick={toggleLang} 
-              className="lang-toggle-btn"
-              style={{
-                background: "rgba(255, 255, 255, 0.05)",
-                border: "1px solid var(--glass-border)",
-                color: "var(--text-secondary)",
-                padding: "6px 12px",
-                borderRadius: "8px",
-                fontSize: "0.85rem",
-                cursor: "pointer",
-                fontFamily: "var(--font-family-sans)",
-                fontWeight: "500",
-                transition: "all 0.2s ease"
+            <select 
+              value={lang} 
+              onChange={(e) => {
+                const val = e.target.value as Lang;
+                setLang(val);
+                localStorage.setItem("site-lang", val);
               }}
+              className="lang-select"
             >
-              {lang === "zh" ? "🌐 English" : "🌐 简体中文"}
-            </button>
+              <option value="en">🌐 English</option>
+              <option value="zh">🌐 简体中文</option>
+              <option value="es">🌐 Español</option>
+              <option value="ja">🌐 日本語</option>
+              <option value="pt">🌐 Português</option>
+              <option value="de">🌐 Deutsch</option>
+              <option value="fr">🌐 Français</option>
+              <option value="ru">🌐 Русский</option>
+              <option value="ko">🌐 한국어</option>
+              <option value="it">🌐 Italiano</option>
+              <option value="vi">🌐 Tiếng Việt</option>
+              <option value="id">🌐 Bahasa Indonesia</option>
+              <option value="tr">🌐 Türkçe</option>
+              <option value="pl">🌐 Polski</option>
+              <option value="nl">🌐 Nederlands</option>
+              <option value="th">🌐 ภาษาไทย</option>
+              <option value="ar">🌐 العربية</option>
+              <option value="hi">🌐 हिन्दी</option>
+            </select>
           </div>
         </header>
 
