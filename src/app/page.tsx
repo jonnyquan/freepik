@@ -18,9 +18,23 @@ export default function Home() {
             <article className="guide-article">
               <h1 className="main-heading">Freepik ➡️ Magnific Brand Upgrade & Community Migration Guide</h1>
               
-              <div className="meta-info">
-                <span className="meta-date">Published: May 2026</span>
-                <span className="meta-author">Source: Compiled by Community Users</span>
+              <div className="meta-info" style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div style={{ display: "flex", gap: "var(--spacing-md)", fontSize: "0.85rem", color: "var(--text-muted)" }}>
+                  <span className="meta-date">Published: May 2026</span>
+                  <span className="meta-author">Source: Compiled by Community Users</span>
+                </div>
+                {/* Legal Disclaimer Box */}
+                <div className="disclaimer-alert-box" style={{ 
+                  background: "rgba(255, 255, 255, 0.02)", 
+                  border: "1px solid var(--glass-border)", 
+                  borderRadius: "12px", 
+                  padding: "var(--spacing-sm)", 
+                  fontSize: "0.85rem",
+                  color: "var(--text-muted)",
+                  lineHeight: "1.5"
+                }}>
+                  <strong>Disclaimer:</strong> This is an unofficial, independent community guide and informational archival site. We are not affiliated with, endorsed by, or connected to Freepik Company, S.L.U. or Magnific. 本站仅为独立、非官方的社区指引及信息归档网站，与 Freepik 或 Magnific AI 无任何关联、背书或商业合作关系。
+                </div>
               </div>
 
               <section className="guide-section">
@@ -60,33 +74,70 @@ export default function Home() {
                   </li>
                 </ul>
               </section>
+
+              <section className="guide-section" style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "var(--spacing-md)" }}>
+                <h2>Looking for a Budget-Friendly Alternative?</h2>
+                <p>
+                  对于广大独立设计师和摄影爱好者来说，虽然 Magnific 的画质超分辨率和细节重塑极为级出色，但其独立的高昂订阅价格（每月 $39 - $299）以及繁琐的专业参数，使日常轻量创作的门槛大幅上升。如果您正在寻找一款操作更简易、对独立开发者更友好、且价格亲民的平替工具，我们非常建议您尝试旁边的独立第三方替代推荐 <strong>DeepImagine</strong>。
+                </p>
+              </section>
             </article>
           </main>
 
           <aside className="sidebar-area">
-            <div className="banner-card" id="deepimagine-banner-card">
-              <div className="banner-badge">Sponsor • Recommended Alternative</div>
-              <h3 className="banner-title">Think Magnific is too expensive and complex?</h3>
+            {/* DeepImagine Sponsored Ad Card */}
+            <div className="banner-card" id="deepimagine-banner-card" style={{ border: "1px solid rgba(168, 85, 247, 0.45)", background: "linear-gradient(135deg, rgba(30, 20, 50, 0.6) 0%, rgba(10, 10, 20, 0.7) 100%)" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div className="banner-badge" style={{ background: "linear-gradient(90deg, var(--accent-sponsor), oklch(0.6 0.2 330))" }}>
+                  Sponsor • 推荐替代
+                </div>
+                <span style={{ 
+                  fontSize: "0.7rem", 
+                  color: "var(--text-muted)", 
+                  background: "rgba(255, 255, 255, 0.05)", 
+                  padding: "2px 6px", 
+                  borderRadius: "4px", 
+                  border: "1px solid var(--glass-border)",
+                  letterSpacing: "0.5px"
+                }}>AD · 广告</span>
+              </div>
+
+              <h3 className="banner-title" style={{ marginTop: "var(--spacing-xs)" }}>觉得 Magnific 太贵太复杂？</h3>
+              
               <p className="banner-desc">
-                Try the next-generation, lightweight independent AI image tool:<br />
-                <strong>👉 DeepImagine.app</strong>, sign up for free credits!
+                试试下一代轻量级 AI 图像增强平替工具：<strong>DeepImagine.app</strong>。新注册用户送免费额度，极速无损放大画质！
               </p>
-              <div className="banner-features">
+
+              {/* Functional Preview Box (Before/After comparison) */}
+              <div className="ad-preview-box">
+                <div className="preview-img-container">
+                  <img src="/demo-portrait.png" alt="Before Original" className="preview-img preview-before" />
+                  <span className="preview-badge-text">Before (原图)</span>
+                </div>
+                <div className="preview-arrow">➔</div>
+                <div className="preview-img-container">
+                  <img src="/demo-portrait.png" alt="After Enhanced" className="preview-img preview-after" />
+                  <span className="preview-badge-text">After (超清重构)</span>
+                </div>
+              </div>
+
+              <div className="banner-features" style={{ margin: "0 0 var(--spacing-sm) 0", padding: "10px 0" }}>
                 <div className="feature-item">
                   <span className="feature-icon">✨</span>
-                  <span>Super easy, one-click lossless HD enhancement</span>
+                  <span><strong>一键式处理：</strong>傻瓜式操作，无需繁琐调参</span>
                 </div>
                 <div className="feature-item">
                   <span className="feature-icon">⚡</span>
-                  <span>Ultra-lightweight, rendering in seconds</span>
+                  <span><strong>秒级极速渲染：</strong>原生推理，无需排队等待</span>
                 </div>
                 <div className="feature-item">
                   <span className="feature-icon">🎁</span>
-                  <span>Free credits immediately upon registration</span>
+                  <span><strong>免费额度赠送：</strong>新注册立即获赠免费算力积分</span>
                 </div>
               </div>
-              <a href="https://deepimagine.app" id="btn-deepimagine-register" target="_blank" rel="noopener noreferrer" className="banner-cta">
-                <span>Sign Up for DeepImagine Now</span>
+
+              <a href="https://deepimagine.app" id="btn-deepimagine-register" target="_blank" rel="noopener noreferrer" className="banner-cta" style={{ background: "linear-gradient(90deg, #fff, #f3e8ff)", color: "#000", fontWeight: "700" }}>
+                <span>立即免费试用 DeepImagine</span>
                 <svg className="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
                   <line x1={5} y1={12} x2={19} y2={12} />
                   <polyline points="12 5 19 12 12 19" />
